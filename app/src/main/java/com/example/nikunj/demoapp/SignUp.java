@@ -3,6 +3,7 @@ package com.example.nikunj.demoapp;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +36,9 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        ActionBar ab=getSupportActionBar();
+        ab.setTitle("Signup");
 
         fname=(EditText)findViewById(R.id.fname_edittext);
         lname=(EditText)findViewById(R.id.lname_edittext);

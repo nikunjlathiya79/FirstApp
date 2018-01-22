@@ -3,6 +3,7 @@ package com.example.nikunj.demoapp;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,9 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ActionBar ab=getSupportActionBar();
+        ab.setTitle("Login");
 
         unm=(EditText)findViewById(R.id.username_edittext);
         pwd=(EditText)findViewById(R.id.password_edittext);
