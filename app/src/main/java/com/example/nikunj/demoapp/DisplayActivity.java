@@ -27,7 +27,7 @@ public class DisplayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display);
 
         ActionBar ab=getSupportActionBar();
-        ab.setTitle("DisplayDetails");
+        ab.setTitle("DisplayUsers");
 
         lv=(ListView)findViewById(R.id.display_listView);
         db = openOrCreateDatabase("Mydatabase.db", SQLiteDatabase.CREATE_IF_NECESSARY, null);
@@ -52,15 +52,12 @@ public class DisplayActivity extends AppCompatActivity {
             {
                 Toast.makeText(DisplayActivity.this, "No Data Found", Toast.LENGTH_SHORT).show();
             }
-
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.displaydata,data);
             lv.setAdapter(adapter);
         }
         catch(Exception e)
         {
             Toast.makeText(DisplayActivity.this, "" + e, Toast.LENGTH_SHORT).show();
-
         }
-
     }
 }

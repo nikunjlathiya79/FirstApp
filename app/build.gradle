@@ -3,7 +3,10 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            storeFile file('C:/Program Files/Git/bin/git.exe')
+            storeFile file('C:/Users/Nikunj/Desktop')
+            keyAlias 'AndroidKey'
+            keyPassword 'nikunj@1993'
+            storePassword 'nikunj@1993'
         }
     }
     compileSdkVersion 25

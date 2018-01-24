@@ -35,15 +35,15 @@ public class Login extends AppCompatActivity {
 //      ========Following line open our database===========
         db = openOrCreateDatabase("Mydatabase.db", SQLiteDatabase.CREATE_IF_NECESSARY, null);
 
+//      ========Following line select  database===========
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 username=unm.getText().toString();
                 password=pwd.getText().toString();
-            try {
                 c = db.rawQuery("select * from Register where Uname='"+username+"' AND Password='"+password+"'",null);
+            try {
                 if (c != null) {
-                    Toast.makeText(Login.this, "in if"+c, Toast.LENGTH_LONG).show();
                     while(c.moveToNext())
                     {
                             ousername=c.getString(4);
@@ -54,13 +54,12 @@ public class Login extends AppCompatActivity {
                             startActivity(i);
                     }
                     else {
-                        Toast.makeText(Login.this, " Username/Password doesn't match", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Username/Password doesn't match", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
             catch (Exception c)
             {
-                Toast.makeText(Login.this, ""+c, Toast.LENGTH_LONG).show();
                 }
             }
         });
