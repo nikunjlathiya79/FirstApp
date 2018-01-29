@@ -22,15 +22,12 @@ public class MainActivity extends AppCompatActivity {
         signupButton = (Button) findViewById(R.id.sign_button);
         loginButton = (Button) findViewById(R.id.login_button);
 
-
     }
-
     public void signup(View v) {
         Intent i = new Intent(MainActivity.this, SignUp.class);
         startActivity(i);
 
     }
-
     public void login(View v) {
         Intent i = new Intent(MainActivity.this, Login.class);
         startActivity(i);

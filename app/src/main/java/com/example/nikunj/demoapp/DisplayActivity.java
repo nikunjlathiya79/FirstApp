@@ -26,8 +26,10 @@ public class DisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
 
+        Toast.makeText(DisplayActivity.this, "UserData Activity", Toast.LENGTH_LONG).show();
+
         ActionBar ab=getSupportActionBar();
-        ab.setTitle("DisplayUsers");
+        ab.setTitle(getString(R.string.screen_name_display_data));
 
         lv=(ListView)findViewById(R.id.display_listView);
         db = openOrCreateDatabase("Mydatabase.db", SQLiteDatabase.CREATE_IF_NECESSARY, null);
@@ -44,7 +46,7 @@ public class DisplayActivity extends AppCompatActivity {
                     String lname = c.getString(2);
                     String gen=c.getString(7);
                     String hobbies=c.getString(9);
-                    data.add(fname + "   " + lname + "   " + gen + "   " + hobbies);
+                    data.add(     fname + "       " + lname + "      " + gen + "      " + hobbies);
                 }
                 c.close();
             }

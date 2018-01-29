@@ -7,4 +7,8 @@
 
     <!-- Screen names-->
     <string name="screen_name_home">Home</string>
+    <string name="screen_name_login">Login</string>
+    <string name="screen_name_signup">SignUp</string>
+    <string name="screen_name_display_data">UserList</string>
+    <string name="screen_name_details_data">Details</string>
 </resources>

@@ -12,12 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.nikunj.db.User;
+import com.example.nikunj.db.UserManager;
+
 public class Login extends AppCompatActivity {
 
     SQLiteDatabase db;
-    EditText unm,pwd;
+    EditText userName,Password;
     Button login;
-    String ousername,opassword,username,password;
+    String registeredUserName,registeredPassword,newUserName,newPassword;
     Cursor c;
 
     @Override
@@ -26,40 +29,28 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         ActionBar ab=getSupportActionBar();
-        ab.setTitle("Login");
+        ab.setTitle(getString(R.string.screen_name_login));
 
-        unm=(EditText)findViewById(R.id.username_edittext);
-        pwd=(EditText)findViewById(R.id.password_edittext);
+        userName=(EditText)findViewById(R.id.username_edittext);
+        Password=(EditText)findViewById(R.id.password_edittext);
         login=(Button)findViewById(R.id.login_button);
 
-//      ========Following line open our database===========
-        db = openOrCreateDatabase("Mydatabase.db", SQLiteDatabase.CREATE_IF_NECESSARY, null);
-
-//      ========Following line select  database===========
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                username=unm.getText().toString();
-                password=pwd.getText().toString();
-                c = db.rawQuery("select * from Register where Uname='"+username+"' AND Password='"+password+"'",null);
-            try {
-                if (c != null) {
-                    while(c.moveToNext())
-                    {
-                            ousername=c.getString(4);
-                            opassword=c.getString(5);
-                    }
-                    if(ousername.equals(username) && opassword.equals(password)){
-                            Intent i=new Intent(Login.this,DisplayActivity.class);
-                            startActivity(i);
-                    }
-                    else {
-                        Toast.makeText(Login.this, "Username/Password doesn't match", Toast.LENGTH_SHORT).show();
-                    }
+                newUserName=userName.getText().toString();
+                newPassword=Password.getText().toString();
+
+                User user=UserManager.getInstance(getApplicationContext()).getUser(newUserName,newPassword);
+
+                if(user==null)
+                {
+                    Toast.makeText(Login.this, "Username/Password doesn't match", Toast.LENGTH_SHORT).show();
                 }
-            }
-            catch (Exception c)
-            {
+                else
+                {
+                    Intent i=new Intent(Login.this,DisplayActivity.class);
+                            startActivity(i);
                 }
             }
         });
