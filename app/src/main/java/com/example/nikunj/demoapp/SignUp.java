@@ -116,7 +116,7 @@ public class SignUp extends AppCompatActivity {
                 {
                     Editable text=Password_edittext.getText();
                     if (text.equals("")){
-                    Password_edittext.setError(" PLease enter password");
+                    Password_edittext.setError(" Please enter password");
                     }
                 }
             }
@@ -176,7 +176,7 @@ public class SignUp extends AppCompatActivity {
         if (UserManager.getInstance(this).isUsernameExist(userName))
             Toast.makeText(SignUp.this,"Username already exists", Toast.LENGTH_SHORT).show();
         else {
-            User user =new User(firstName,lastName,userName,emailId,password,UserType.getUserType(spinnerValue),Gender.getGender(gender),hobbies);
+            User user =new User(firstName,lastName,emailId,userName,password,Gender.getGender(gender),UserType.getUserType(spinnerValue),hobbies);
             UserManager.getInstance(this).store(user);
 
             Toast.makeText(SignUp.this, "Congrates you are Registered", Toast.LENGTH_SHORT).show();

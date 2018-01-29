@@ -13,7 +13,7 @@ public class User {
     private Gender gender;
     private ArrayList<String> hobbies = new ArrayList<>();
 
-    public User(String firstName, String lastName, String emailId,String userName, String password, UserType userType, Gender gender, ArrayList<String> hobbies) {
+    public User(String firstName, String lastName, String emailId,String userName, String password, Gender gender,UserType userType, ArrayList<String> hobbies) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;

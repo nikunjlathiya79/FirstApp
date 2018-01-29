@@ -36,9 +36,6 @@ public class UserManager {
             instance = new UserManager();
 
             db = context.openOrCreateDatabase("Mydatabase.db", SQLiteDatabase.CREATE_IF_NECESSARY, null);
-//        String s="drop table Register";
-//        db.execSQL(s);
-//        Toast.makeText(SignUp.this, "Successully drop", Toast.LENGTH_SHORT).show();
 
             String s = "CREATE TABLE IF NOT EXISTS Register(ID INTEGER PRIMARY KEY AUTOINCREMENT,Fname text,Lname text,Emailid text,Uname text,Password text,Gender text,Usertype text,Hobbies text)";
             db.execSQL(s);
@@ -47,12 +44,10 @@ public class UserManager {
         }
         return instance;
     }
-
     public boolean isUsernameExist(String userName) {
         Cursor c = db.rawQuery("select * from  Register where Uname='" + userName + "'", null);
         return c.getCount() > 0 ? true : false;
     }
-
     public void store(User user) {
         db.execSQL("insert into Register(Fname,Lname,Emailid,Uname,Password,Gender,Usertype,Hobbies)values('" + user.getFirstName() + "','" + user.getLastName() + "','" + user.getEmailId() + "','" + user.getUserName() + "','" + user.getPassword() + "','" + user.getGender().toString() + "','" + user.getUserType() + "','" + user.getHobbies() + "');");
     }
@@ -67,7 +62,7 @@ public class UserManager {
                 String password = c.getString(5);
                 Gender gender = Gender.getGender(c.getString(6));
                 UserType userType = UserType.getUserType(c.getString(7));
-                User user = new User(firstName, lastName, emailId, userName, password,userType,gender, null);
+                User user = new User(firstName, lastName, emailId, userName, password,gender,userType, null);
                 return user;
             }
             return  null;
